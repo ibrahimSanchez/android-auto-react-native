@@ -116,4 +116,6 @@ dependencies {
     } else {
         implementation jscFlavor
     }
+
+    implementation 'androidx.car.app:app:1.7.0-beta01'
 }

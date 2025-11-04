@@ -1,6 +1,41 @@
-pluginManagement { includeBuild("../node_modules/@react-native/gradle-plugin") }
-plugins { id("com.facebook.react.settings") }
-extensions.configure(com.facebook.react.ReactSettingsExtension){ ex -> ex.autolinkLibrariesFromCommand() }
+// pluginManagement { includeBuild("../node_modules/@react-native/gradle-plugin") }
+// plugins { id("com.facebook.react.settings") }
+// extensions.configure(com.facebook.react.ReactSettingsExtension){ ex -> ex.autolinkLibrariesFromCommand() }
+// rootProject.name = 'MiAppConAndroidAuto'
+// include ':app'
+// includeBuild('../node_modules/@react-native/gradle-plugin')
+
+
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+    includeBuild("../node_modules/@react-native/gradle-plugin")
+}
+
+plugins { 
+    id("com.facebook.react.settings") 
+}
+
+dependencyResolutionManagement {
+    repositories {
+        google()
+        mavenCentral()
+        maven {
+            url(new File(["node", "--print", "require.resolve('react-native/package.json')"].execute(null, rootDir).text.trim(), "../android"))
+        }
+        maven {
+            url(new File(["node", "--print", "require.resolve('jsc-android/package.json', { paths: [require.resolve('react-native/package.json')] })"].execute(null, rootDir).text.trim(), "../dist"))
+        }
+    }
+}
+
+extensions.configure(com.facebook.react.ReactSettingsExtension){ ex -> 
+    ex.autolinkLibrariesFromCommand() 
+}
+
 rootProject.name = 'MiAppConAndroidAuto'
 include ':app'
 includeBuild('../node_modules/@react-native/gradle-plugin')
