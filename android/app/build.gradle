@@ -76,7 +76,9 @@ android {
     ndkVersion rootProject.ext.ndkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
-
+    aaptOptions {
+        noCompress "xml"
+    }
     namespace "com.miappconandroidauto"
     defaultConfig {
         applicationId "com.miappconandroidauto"

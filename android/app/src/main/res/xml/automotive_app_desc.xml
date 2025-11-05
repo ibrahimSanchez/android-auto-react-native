@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<automotiveApp>
-    <uses name="template"/>
+<automotiveApp xmlns:car="http://schemas.android.com/apk/res-auto">
+  <uses name="template" />
+  <uses name="minApiLevel" value="1" />
 </automotiveApp>
